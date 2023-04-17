@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "872166872907",
+    "project_id": "gptnote-ebe23",
+    "storage_bucket": "gptnote-ebe23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:872166872907:android:b01aca6ea5444c21d87ace",
+        "android_client_info": {
+          "package_name": "com.example.gptNote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "872166872907-5gb1fsrc8u5rv0vfrvqvkul5jf4midfg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7t28FxaujtYS2scxPF6AJcXkGlsGxsU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "872166872907-5gb1fsrc8u5rv0vfrvqvkul5jf4midfg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
