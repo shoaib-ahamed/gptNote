@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text("Welcome to chatGPT"),
-          Container(height: 20, width: 20),
+          const SizedBox(height: 20, width: 20),
           ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(

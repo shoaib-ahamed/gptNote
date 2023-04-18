@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +55,6 @@ class _LoginScreenState extends State<LoginScreen> {
             builder: (context) => const FetchScreen(),
           ),
         );
-        print('Succefully logged in');
       } on FirebaseException catch (error) {
         GlobalMethods.errorDialog(
             subtitle: '${error.message}', context: context);
@@ -61,8 +62,6 @@ class _LoginScreenState extends State<LoginScreen> {
           _isLoading = false;
         });
       } catch (error) {
-        print("error :");
-        print(error);
         GlobalMethods.errorDialog(subtitle: '$error', context: context);
         setState(() {
           _isLoading = false;
@@ -142,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 12,
                           ),
                           //Password
@@ -221,7 +220,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  GoogleButton(),
+                  const GoogleButton(),
                   const SizedBox(
                     height: 10,
                   ),

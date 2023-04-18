@@ -105,33 +105,6 @@ class GlobalMethods {
         });
   }
 
-  static Future<void> addToCart(
-      {required String productId,
-      required int quantity,
-      required BuildContext context}) async {
-    final User? user = authInstance.currentUser;
-    final _uid = user!.uid;
-    final cartId = const Uuid().v4();
-    try {
-      FirebaseFirestore.instance.collection('users').doc(_uid).update({
-        'userCart': FieldValue.arrayUnion([
-          {
-            'cartId': cartId,
-            'productId': productId,
-            'quantity': quantity,
-          }
-        ])
-      });
-      await Fluttertoast.showToast(
-        msg: "Item has been added to your cart",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-      );
-    } catch (error) {
-      errorDialog(subtitle: error.toString(), context: context);
-    }
-  }
-
   static Future<void> addNotes(
       {required String note, required BuildContext context}) async {
     final User? user = authInstance.currentUser;
@@ -162,29 +135,5 @@ class GlobalMethods {
       errorDialog(subtitle: error.toString(), context: context);
     }
     i++;
-  }
-
-  static Future<void> addToWishlist(
-      {required String productId, required BuildContext context}) async {
-    final User? user = authInstance.currentUser;
-    final _uid = user!.uid;
-    final wishlistId = const Uuid().v4();
-    try {
-      FirebaseFirestore.instance.collection('users').doc(_uid).update({
-        'userWish': FieldValue.arrayUnion([
-          {
-            'wishlistId': wishlistId,
-            'productId': productId,
-          }
-        ])
-      });
-      await Fluttertoast.showToast(
-        msg: "Item has been added to your wishlist",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.CENTER,
-      );
-    } catch (error) {
-      errorDialog(subtitle: error.toString(), context: context);
-    }
   }
 }

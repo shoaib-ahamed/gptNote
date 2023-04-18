@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison, use_build_context_synchronously
+
 import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -54,10 +56,10 @@ class _UserScreenState extends State<UserScreen> {
       return;
     }
     try {
-      String _uid = user!.uid;
+      String uid = user!.uid;
 
       final DocumentSnapshot userDoc =
-          await FirebaseFirestore.instance.collection('users').doc(_uid).get();
+          await FirebaseFirestore.instance.collection('users').doc(uid).get();
       if (userDoc == null) {
         return;
       } else {
@@ -106,7 +108,7 @@ class _UserScreenState extends State<UserScreen> {
                     ),
                     children: <TextSpan>[
                       TextSpan(
-                          text: _name == null ? 'user' : _name,
+                          text: _name ?? 'user',
                           style: TextStyle(
                             color: color,
                             fontSize: 25,
@@ -114,7 +116,7 @@ class _UserScreenState extends State<UserScreen> {
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              print('My name is pressed');
+                              // print('My name is pressed');
                             }),
                     ],
                   ),
@@ -222,11 +224,11 @@ class _UserScreenState extends State<UserScreen> {
   //           actions: [
   //             TextButton(
   //               onPressed: () async {
-  //                 String _uid = user!.uid;
+  //                 String uid = user!.uid;
   //                 try {
   //                   await FirebaseFirestore.instance
   //                       .collection('users')
-  //                       .doc(_uid)
+  //                       .doc(uid)
   //                       .update({
   //                     'shipping-address': _addressTextController.text,
   //                   });
@@ -262,7 +264,7 @@ class _UserScreenState extends State<UserScreen> {
         // isTitle: true,
       ),
       subtitle: TextWidget(
-        text: subtitle == null ? "" : subtitle,
+        text: subtitle ?? "",
         color: color,
         textSize: 18,
       ),

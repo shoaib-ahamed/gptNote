@@ -1,18 +1,9 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:provider/provider.dart';
 
 import '../consts/contss.dart';
-import '../inner_screens/feeds_screen.dart';
-import '../inner_screens/on_sale_screen.dart';
-import '../models/products_model.dart';
-import '../providers/dark_theme_provider.dart';
-import '../providers/products_provider.dart';
-import '../services/global_methods.dart';
 import '../services/utils.dart';
-import '../widgets/feed_items.dart';
-import '../widgets/on_sale_widget.dart';
 import '../widgets/text_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -26,12 +17,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final Utils utils = Utils(context);
-    final themeState = utils.getTheme;
+    // final themeState = utils.getTheme;
     final Color color = Utils(context).color;
     Size size = utils.getScreenSize;
-    final productProviders = Provider.of<ProductsProvider>(context);
-    List<ProductModel> allProducts = productProviders.getProducts;
-    List<ProductModel> productsOnSale = productProviders.getOnSaleProducts;
+    // final productProviders = Provider.of<ProductsProvider>(context);
+    // List<ProductModel> allProducts = productProviders.getProducts;
+    // List<ProductModel> productsOnSale = productProviders.getOnSaleProducts;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -58,10 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 6,
             ),
             TextButton(
-              onPressed: () {
-                GlobalMethods.navigateTo(
-                    ctx: context, routeName: OnSaleScreen.routeName);
-              },
+              onPressed: () {},
               child: TextWidget(
                 text: 'View all',
                 maxLines: 1,
@@ -97,21 +85,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(
                   width: 8,
                 ),
-                Flexible(
-                  child: SizedBox(
-                    height: size.height * 0.24,
-                    child: ListView.builder(
-                        itemCount: productsOnSale.length < 10
-                            ? productsOnSale.length
-                            : 10,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (ctx, index) {
-                          return ChangeNotifierProvider.value(
-                              value: productsOnSale[index],
-                              child: const OnSaleWidget());
-                        }),
-                  ),
-                ),
               ],
             ),
             const SizedBox(
@@ -130,10 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   // const Spacer(),
                   TextButton(
-                    onPressed: () {
-                      GlobalMethods.navigateTo(
-                          ctx: context, routeName: FeedsScreen.routeName);
-                    },
+                    onPressed: () {},
                     child: TextWidget(
                       text: 'Browse all',
                       maxLines: 1,
@@ -145,22 +115,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             GridView.count(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: 2,
-              padding: EdgeInsets.zero,
-              // crossAxisSpacing: 10,
-              childAspectRatio: size.width / (size.height * 0.61),
-              children: List.generate(
-                  allProducts.length < 4
-                      ? allProducts.length // length 3
-                      : 4, (index) {
-                return ChangeNotifierProvider.value(
-                  value: allProducts[index],
-                  child: const FeedsWidget(),
-                );
-              }),
-            )
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                padding: EdgeInsets.zero,
+                // crossAxisSpacing: 10,
+                childAspectRatio: size.width / (size.height * 0.61),
+                children: const [])
           ],
         ),
       ),

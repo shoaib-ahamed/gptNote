@@ -60,11 +60,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             email: _emailTextController.text.toLowerCase().trim(),
             password: _passTextController.text.trim());
         final User? user = authInstance.currentUser;
-        final _uid = user!.uid;
+        final uid = user!.uid;
         user.updateDisplayName(_fullNameController.text);
         user.reload();
-        await FirebaseFirestore.instance.collection('users').doc(_uid).set({
-          'id': _uid,
+        await FirebaseFirestore.instance.collection('users').doc(uid).set({
+          'id': uid,
           'name': _fullNameController.text,
           'email': _emailTextController.text.toLowerCase(),
           'shipping-address': _addressTextController.text,
@@ -72,10 +72,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           'userCart': [],
           'createdAt': Timestamp.now(),
         });
+        // ignore: use_build_context_synchronously
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => const FetchScreen(),
         ));
-        print('Succefully registered');
       } on FirebaseException catch (error) {
         GlobalMethods.errorDialog(
             subtitle: '${error.message}', context: context);
@@ -98,7 +98,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Utils(context).getTheme;
-    Color color = Utils(context).color;
+    // Color color = Utils(context).color;
 
     return Scaffold(
       body: LoadingManager(
