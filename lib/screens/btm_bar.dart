@@ -63,7 +63,8 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
             label: "Chat",
           ),
           BottomNavigationBarItem(
-            icon: Icon(_selectedIndex == 2 ? IconlyBold.buy : IconlyLight.buy),
+            icon: Icon(
+                _selectedIndex == 2 ? IconlyBold.message : IconlyLight.message),
             label: "Note",
           ),
           BottomNavigationBarItem(
