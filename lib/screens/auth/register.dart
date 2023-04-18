@@ -67,9 +67,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
           'id': uid,
           'name': _fullNameController.text,
           'email': _emailTextController.text.toLowerCase(),
-          'shipping-address': _addressTextController.text,
-          'userWish': [],
-          'userCart': [],
           'createdAt': Timestamp.now(),
         });
         // ignore: use_build_context_synchronously

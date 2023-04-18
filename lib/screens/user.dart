@@ -65,19 +65,26 @@ class _UserScreenState extends State<UserScreen> {
       } else {
         _email = userDoc.get('email');
         _name = userDoc.get('name');
-        address = userDoc.get('shipping-address');
         notes = userDoc.get('notes');
       }
-    } catch (error) {
-      setState(() {
-        _isLoading = false;
-      });
-      GlobalMethods.errorDialog(subtitle: '$error', context: context);
+    } catch (e) {
+      // ignore: avoid_print
+      print(e);
     } finally {
       setState(() {
         _isLoading = false;
       });
     }
+    // catch (error) {
+    //   setState(() {
+    //     _isLoading = false;
+    //   });
+    //   GlobalMethods.errorDialog(subtitle: '$error', context: context);
+    // } finally {
+    //   setState(() {
+    //     _isLoading = false;
+    //   });
+    // }
   }
 
   @override

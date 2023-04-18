@@ -36,7 +36,9 @@ class _NotesScreenState extends State<NotesScreen> {
           );
         }
         if (snapshot.data!.docs.isEmpty) {
-          return const Text("no data found");
+          return const Center(
+              child:
+                  Text("no notes found, you can ask anything to create note"));
         }
         // ignore: unnecessary_null_comparison
         if (snapshot != null && snapshot.data != null) {
